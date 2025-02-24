@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:37:25 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/02/24 14:58:33 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/02/24 18:10:20 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	append_node(t_stack_node **stack, int n)
 		last_node->next = node;
 		node->prev = last_node;
 	}
-	
+	write(1, "c", 1);
 }
 
 void	init_stack_a(t_stack_node **a, char **argv)
@@ -64,18 +64,25 @@ void	init_stack_a(t_stack_node **a, char **argv)
 	long	n;
 	int		i;
 
-	i = 0;
-	while (argv[i])
+	i = -1;
+	while (argv[++i])
 	{
-		if (error_syntax(argv[i]))
-			free_errors(a);
+		write(1, &argv[i], 1);
+		write(1, "b1", 2);
+		if (error_syntax(argv[i])) {
+			write(1, "d", 1);
+			free_errors(a); 
+			write(1, "e", 1);}
+		write(1, "b2", 2);
 		n = ft_atoi(argv[i]);
 		if (n > INT_MAX || n < INT_MIN)
 			free_errors(a);
 		if (error_duplicate(*a, (int)n))
 			free_errors(a);
+		//write(1, "b", 1);
+		write(1, &n, 1);
 		append_node(a, (int)n);
-		i++;
+		write(1, "\n", 1);
 	}
 }
 

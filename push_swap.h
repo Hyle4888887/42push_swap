@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 10:43:39 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/02/24 15:02:42 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/02/24 17:57:11 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,15 @@ typedef struct s_stack_node
 }						t_stack_node;
 
 // Libft
-int	ft_isdigit(int c);
+int						ft_isdigit(int c);
+char					**ft_split(char const *s, char c);
+size_t					ft_strlen(const char *str);
+size_t					ft_strlcpy(char *dst, const char *src, size_t size);
 
 // Handle errors
 bool					error_syntax(const char *s);
 bool					error_duplicate(t_stack_node *a, int n);
 void					free_errors(t_stack_node **a);
-
 // Stack initiation
 void					init_stack_a(t_stack_node **a, char **argv);
 
@@ -50,7 +52,6 @@ void					init_nodes_b(t_stack_node *a, t_stack_node *b);
 // Stack utils
 bool					stack_sorted(t_stack_node *a);
 int						stack_len(t_stack_node *stack);
-char					**split(char *s, char c);
 void					free_stack(t_stack_node **stack);
 void					prep_for_push(t_stack_node **stack,
 							t_stack_node *top_node, char stack_name);

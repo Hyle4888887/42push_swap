@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:06:57 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/02/24 14:40:13 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/02/24 17:50:19 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ int	main(int argc, char **argv)
 
 	a = NULL;
 	b = NULL;
+	write(1, "a", 1);
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
 	else if (argc == 2)
-		argv = split(argv[1], ' ');
+		argv = ft_split((const char *)argv[1], ' ');
+	//write(1, "a", 1);
 	init_stack_a(&a, argv + 1);
 	if (!stack_sorted(a))
 	{

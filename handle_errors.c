@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 11:13:14 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/02/24 16:04:28 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/02/24 18:03:07 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ bool error_syntax(const char *s)
         else if (s[i] == '-' && s[i - 1] == ' ' && (s[i+1] > 47 && s[i+1] < 58))
             continue ;
         else
-            return (false);
+            return (true);
     }
-    return (true);
+    return (false);
 }
 
 bool error_duplicate(t_stack_node *a, int n)
