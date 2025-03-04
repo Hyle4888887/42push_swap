@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 10:43:39 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/02/24 17:57:11 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/03/04 11:31:09 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <limits.h>
 # include <stdbool.h>
 # include <stdlib.h>
+
+# include <stdio.h>
 
 typedef struct s_stack_node
 {

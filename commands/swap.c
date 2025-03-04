@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:49:35 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/02/24 11:44:42 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/03/04 11:32:05 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	swap(t_stack_node **stack)
 	node->index = 0;
 	node->next->index = 1;
 	(*stack) = node;
+	printf("Node %i: %p ; data : %i\n", node->index,node, node->nbr);
 }
 
 void	sa(t_stack_node **a)

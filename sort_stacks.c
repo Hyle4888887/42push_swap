@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 16:05:49 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/02/24 15:00:31 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/03/04 10:57:59 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ int	stack_len(t_stack_node *stack)
 	int	len;
 
 	len = 0;
-	while (stack)
+	while (stack != NULL)
 	{
-		stack = stack->next;
 		len++;
+		stack = stack->next;
+		int c = (len % 10) + '0';
+		write(1, &c, 1);
 	}
 	return (len);
 }

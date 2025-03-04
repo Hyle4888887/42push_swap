@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 15:23:36 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/02/24 14:59:15 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/03/04 10:47:13 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,17 @@ t_stack_node	*find_max(t_stack_node *stack)
 
 t_stack_node	*find_last(t_stack_node *stack)
 {
+	write(1, "\n0", 2);
 	if (!stack)
 		return (NULL);
-	while (stack->next != NULL)
+	write(1, "1", 1);
+	int len = stack_len(stack);
+	write(1, "a", 1);
+	while ((--len)){
 		stack = stack->next;
+		//write(1, "c", 1);
+	}
+	//write(1, "b", 1);
 	return (stack);
 }
 

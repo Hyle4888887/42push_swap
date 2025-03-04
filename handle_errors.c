@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 11:13:14 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/02/24 18:03:07 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/03/04 11:30:49 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,16 @@ void    free_errors(t_stack_node **a)
     exit(1);
 }
 
-void    free_stack(t_stack_node **stack)
-{
-    *stack = find_last(*stack);
-    while ((*stack)->prev)
-    {
-        (*stack) = (*stack)->prev;
-        free((*stack)->next);
+void free_stack(t_stack_node **stack) {
+    t_stack_node *current;
+    t_stack_node *next;
+    
+    current = *stack;
+    printf("stack prev = %p\n", (*stack)->prev);
+    while (current != NULL) {
+        next = current->next;  // Save the next pointer before freeing
+        printf("Freeing : %p\n", current);
+        free(current);         // Free the current node
+        current = next;        // Move to the next node
     }
-    free((*stack)->prev);
-    free(*stack);
-    return ;
 }

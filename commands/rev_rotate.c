@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 13:33:53 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/02/24 11:39:05 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/03/04 11:34:04 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void static	rev_rotate(t_stack_node **stack)
 		(*stack) = (*stack)->next;
 	(*stack)->next = NULL;
 	(*stack) = first_node;
+	printf("Node %i: %p ; data : %i\n", first_node->index, first_node, first_node->nbr);
 }
 
 void	rra(t_stack_node **a)

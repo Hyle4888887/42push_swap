@@ -6,7 +6,7 @@
 #    By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/24 11:46:32 by mpoirier          #+#    #+#              #
-#    Updated: 2025/02/24 17:57:39 by mpoirier         ###   ########.fr        #
+#    Updated: 2025/03/04 11:07:46 by mpoirier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS =  main.c ./handle_errors.c ./init_a_to_b.c ./init_b_to_a.c \
 OBJS = ${SRCS:.c=.o}
 
 CC = cc 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address,leak,undefined -g
 INCLUDES = -I ./
 
 .c.o:
