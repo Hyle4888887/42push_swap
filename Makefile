@@ -6,7 +6,7 @@
 #    By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/24 11:46:32 by mpoirier          #+#    #+#              #
-#    Updated: 2025/03/04 11:07:46 by mpoirier         ###   ########.fr        #
+#    Updated: 2025/03/04 13:29:00 by mpoirier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ all : $(NAME)
 
 $(NAME):	$(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) -o $(NAME)
-
+		
 clean : 
 	rm -rf $(OBJS)
 

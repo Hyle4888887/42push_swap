@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 10:43:39 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/03/04 11:31:09 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/03/04 13:47:56 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct s_stack_node
 	struct s_stack_node	*next;
 	struct s_stack_node	*prev;
 }						t_stack_node;
+
+void					print_list(t_stack_node *stack);
 
 // Libft
 int						ft_isdigit(int c);

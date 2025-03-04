@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 13:33:53 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/03/04 11:34:04 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/03/04 14:19:45 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,22 @@
 void static	rev_rotate(t_stack_node **stack)
 {
 	t_stack_node	*first_node;
+	int				i;
 
 	first_node = find_last(*stack);
+	i = stack_len(*stack);
 	first_node->next = (*stack);
 	first_node->prev = NULL;
-	while ((*stack)->index < (first_node->index - 1))
+	printf("index last_node: %i \n", first_node->index);
+	while ((--i) > 0)
+	{
+		printf("data node: %i\nindex: %i\n", (*stack)->nbr, i);
 		(*stack) = (*stack)->next;
+	}
 	(*stack)->next = NULL;
 	(*stack) = first_node;
-	printf("Node %i: %p ; data : %i\n", first_node->index, first_node, first_node->nbr);
+	printf("rev_rotate: \n");
+	print_list(*stack);
 }
 
 void	rra(t_stack_node **a)
