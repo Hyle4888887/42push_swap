@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 16:35:15 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/02/24 14:54:24 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/03/04 16:20:03 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	set_target_a(t_stack_node *a, t_stack_node *b)
 		while (current_b)
 		{
 			if (current_b->nbr < a->nbr
-				&& current_b->nbr > best_match_index)
+				&& current_b->index > best_match_index)
 			{
 				best_match_index = current_b->nbr;
 				target_node = current_b;
@@ -72,7 +72,8 @@ static void	cost_analysis_a(t_stack_node *a, t_stack_node *b)
 	{
 		a->push_cost = a->index;
 		if (!(a->above_median))
-			a->push_cost = len_a - (a->index);
+			a->push_cost = len_a - (a->index); 
+		
 		if (a->target_node->above_median)
 			a->push_cost += len_b - (a->target_node->index);
 		else

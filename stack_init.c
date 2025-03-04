@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:37:25 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/03/04 13:39:57 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/03/04 16:23:28 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static void	append_node(t_stack_node **stack, int n)
 		last_node->next = node;
 		node->prev = last_node;
 	}
-	printf("Node : %p ; data : %i\n", node, node->nbr);
 }
 
 void	init_stack_a(t_stack_node **a, char **argv)
@@ -76,6 +75,7 @@ void	init_stack_a(t_stack_node **a, char **argv)
 			free_errors(a);
 		append_node(a, (int)n);
 	}
+	current_index(*a);
 }
 
 void	prep_for_push(t_stack_node **stack, t_stack_node *top_node,

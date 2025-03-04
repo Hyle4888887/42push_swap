@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 16:05:49 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/03/04 13:40:45 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/03/04 16:14:16 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 		rev_rotate_both(a, b, cheapest_node);
 	prep_for_push(a, cheapest_node, 'a');
 	prep_for_push(a, cheapest_node->target_node, 'b');
-	push_b(b, a);
+	push_b(a, b);
 }
 
 static void	move_b_to_a(t_stack_node **a, t_stack_node **b)
@@ -62,15 +62,17 @@ void	sort_stacks(t_stack_node **a, t_stack_node **b)
 	int	len_a;
 
 	len_a = stack_len(*a);
-	if (len_a-- > 3 && !stack_sorted(*a))
-		push_b(b, a);
-	if (len_a-- > 3 && !stack_sorted(*a))
-		push_b(b, a);
-	while (len_a-- > 3 && !stack_sorted(*a))
+	if ((len_a--) > 3 && !stack_sorted(*a))
+		push_b(a, b);
+	if ((len_a--) > 3 && !stack_sorted(*a))
+		push_b(a, b);
+	while ((len_a--) > 3 && !stack_sorted(*a))
 	{
 		init_nodes_a(*a, *b);
 		move_a_to_b(a, b);
+		write(1, "c\n", 2);
 	}
+	init_nodes_a(*a, *b);
 	sort_three(a);
 	while (*b)
 	{

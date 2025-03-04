@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 10:43:39 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/03/04 13:47:56 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/03/04 16:07:19 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_stack_node			*get_cheapest(t_stack_node *stack);
 
 // Commandes
 void					push_a(t_stack_node **a, t_stack_node **b);
-void					push_b(t_stack_node **b, t_stack_node **a);
+void					push_b(t_stack_node **a, t_stack_node **b);
 void					sa(t_stack_node **a);
 void					sb(t_stack_node **b);
 void					ss(t_stack_node **a, t_stack_node **b);
