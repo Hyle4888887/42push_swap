@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 16:35:15 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/03/04 16:20:03 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/03/05 14:39:45 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	current_index(t_stack_node *stack)
 	if (!stack)
 		return ;
 	median = stack_len(stack) / 2;
-	while (stack)
+	while (stack && stack != NULL)
 	{
 		stack->index = i;
 		if (i <= median)
-			stack ->above_median = true;
+			stack->above_median = true;
 		else
 			stack->above_median = false;
 		stack = stack->next;

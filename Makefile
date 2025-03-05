@@ -6,7 +6,7 @@
 #    By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/24 11:46:32 by mpoirier          #+#    #+#              #
-#    Updated: 2025/03/04 13:29:00 by mpoirier         ###   ########.fr        #
+#    Updated: 2025/03/05 13:20:16 by mpoirier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,3 +38,7 @@ fclean : clean
 		rm -rf $(NAME)
 
 re : fclean all
+
+test : re 
+		rm -rf $(OBJS)
+		clear

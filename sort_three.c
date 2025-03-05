@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 15:51:53 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/03/04 13:41:01 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/03/05 14:00:27 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,3 +24,5 @@ void	sort_three(t_stack_node **a)
 	if ((*a)->nbr > (*a)->next->nbr)
 		sa(a);
 }
+
+

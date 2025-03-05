@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 12:38:07 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/02/24 14:55:15 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/03/05 14:45:58 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,32 @@ static void	set_target_b(t_stack_node *a, t_stack_node *b)
 	}
 }
 
+static void	cost_analysis_b(t_stack_node *a, t_stack_node *b)
+{
+	int	len_a;
+	int	len_b;
+
+	len_a = stack_len(a);
+	len_b = stack_len(b);
+	while (b)
+	{
+		b->push_cost = b->index;
+		if (!(b->above_median))
+			b->push_cost = len_b - (b->index); 
+		
+		if (b->target_node->above_median)
+			b->push_cost += len_a - (b->target_node->index);
+		else
+			b->push_cost += len_a - (b->target_node->index);
+		b = b->next;
+	}
+}
+
 void	init_nodes_b(t_stack_node *a, t_stack_node *b)
 {
 	current_index(a);
 	current_index(b);
 	set_target_b(a, b);
+	cost_analysis_b(a, b);
+	set_cheapest(b);
 }

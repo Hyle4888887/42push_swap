@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 11:13:14 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/03/04 11:30:49 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/03/05 13:14:09 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,16 @@ bool error_duplicate(t_stack_node *a, int n)
 
 void    free_errors(t_stack_node **a)
 {
-    *a = find_last(*a);
-    while ((*a)->prev)
+    t_stack_node *current;
+    t_stack_node *next;
+    
+    current = *a;
+    while (current != NULL)
     {
-        (*a) = (*a)->prev;
-        free((*a)->next);
+        next = current->next;
+        free(current);
+        current = next;
     }
-    free((*a)->prev);
-    free(*a);
     exit(1);
 }
 
@@ -60,11 +62,10 @@ void free_stack(t_stack_node **stack) {
     t_stack_node *next;
     
     current = *stack;
-    printf("stack prev = %p\n", (*stack)->prev);
-    while (current != NULL) {
-        next = current->next;  // Save the next pointer before freeing
-        printf("Freeing : %p\n", current);
-        free(current);         // Free the current node
-        current = next;        // Move to the next node
+    while (current != NULL)
+    {
+        next = current->next;
+        free(current);
+        current = next;
     }
 }
