@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 12:38:07 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/03/05 14:45:58 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/04/14 16:10:42 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ static void	cost_analysis_b(t_stack_node *a, t_stack_node *b)
 	while (b)
 	{
 		b->push_cost = b->index;
-		if (!(b->above_median))
+		if (!(b->above_mean))
 			b->push_cost = len_b - (b->index); 
 		
-		if (b->target_node->above_median)
+		if (b->target_node->above_mean)
 			b->push_cost += len_a - (b->target_node->index);
 		else
 			b->push_cost += len_a - (b->target_node->index);
@@ -63,6 +63,8 @@ static void	cost_analysis_b(t_stack_node *a, t_stack_node *b)
 
 void	init_nodes_b(t_stack_node *a, t_stack_node *b)
 {
+	if (!b)
+		return;
 	current_index(a);
 	current_index(b);
 	set_target_b(a, b);

@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:37:25 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/03/05 14:09:57 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/04/14 16:18:13 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	init_stack_a(t_stack_node **a, char **argv)
 	long	n;
 	int		i;
 
-	i = 0;
+	i = -1;
 	while (argv[++i])
 	{
 		if (error_syntax(argv[i]))
@@ -76,4 +76,41 @@ void	init_stack_a(t_stack_node **a, char **argv)
 		append_node(a, (int)n);
 	}
 	current_index(*a);
+}
+
+static int	get_mean(t_stack_node *stack) // mean == moyenne en anglais
+{
+    long	nb;
+	long	i;
+	
+	nb = 0;
+	i = 0;
+	while (stack && stack != NULL)
+	{
+		nb += (long)stack->nbr;
+		stack = stack->next;
+		i++;
+	}
+	return ((int)(nb / i));
+}
+
+void	current_index(t_stack_node *stack)
+{
+	int	i;
+	int	mean;
+
+	i = 0;
+	if (!stack)
+		return ;
+	mean = get_mean(stack);
+	while (stack && stack != NULL)
+	{
+		stack->index = i;
+		if (stack->nbr > mean)
+			stack->above_mean = true;
+		else
+			stack->above_mean = false;
+		stack = stack->next;
+		i++;
+	}
 }

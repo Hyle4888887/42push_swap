@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 11:13:14 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/03/05 13:14:09 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/04/14 15:13:50 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void free_stack(t_stack_node **stack) {
     t_stack_node *current;
     t_stack_node *next;
     
+    if (!stack)
+        return ;
     current = *stack;
     while (current != NULL)
     {
