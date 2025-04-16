@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:34:18 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/04/14 16:10:42 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/04/15 14:34:18 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	push_a(t_stack_node **a, t_stack_node **b)
 	if ((*b))
 		(*b)->prev = NULL;
 	node->next = (*a);
+	if ((*a))
+		(*a)->prev = node;
 	(*a) = node;
 	current_index(*a);
 	current_index(*b);
@@ -59,8 +61,11 @@ void	push_b(t_stack_node **a, t_stack_node **b)
 		return ;
 	node = (*a);
 	(*a) = (*a)->next;
-	(*a)->prev = NULL;
+	if ((*a))
+		(*a)->prev = NULL;
 	node->next = (*b);
+	if ((*b))
+		(*b)->prev = node;
 	(*b) = node;
 	current_index(*a);
 	current_index(*b);;

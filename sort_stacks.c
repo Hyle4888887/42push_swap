@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 16:05:49 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/04/14 16:46:06 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/04/16 15:21:34 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,9 @@ static void	move_b_to_a(t_stack_node **a, t_stack_node **b)
 	else if ((!(cheapest_node->above_mean)
 		|| !(cheapest_node->target_node->above_mean)) && len > 1)
 		rev_rotate_both(a, b, cheapest_node);
-	printf("debug move_b_to_a 1");
 	prep_for_push(b, cheapest_node, 'b');
-	printf("debug move_b_to_a 2");
 	prep_for_push(a, (*b)->target_node, 'a');
-	printf("debug move_b_to_a 3");
 	push_a(a, b);
-	printf("debug move_b_to_a 4");
 }
 
 static void	min_on_top(t_stack_node **a)
@@ -102,7 +98,6 @@ void	sort_stacks(t_stack_node **a, t_stack_node **b)
 	i = 0;
 	while (*b &&(i++) < 10)
 	{
-		//printf("debug sort_stack 8, i = %d\n", i);
 		init_nodes_a(*a, *b);
 		init_nodes_b(*a, *b);
 		move_b_to_a(a, b);

@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 13:33:53 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/04/14 16:58:54 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/04/16 15:22:07 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void static	rev_rotate(t_stack_node **stack)
 	t_stack_node	*first_node;
 	t_stack_node	*last_node;
 	
+	print_list(*stack, "Before rotate");
 	first_node = *stack;
 	last_node = find_last(*stack);
 	first_node->prev = last_node;
@@ -25,6 +26,7 @@ void static	rev_rotate(t_stack_node **stack)
 	last_node->next = first_node;
 	*stack = last_node;	
 	current_index(*stack);
+	print_list(*stack, "After rotate");
 }
 
 void	rra(t_stack_node **a)
@@ -49,12 +51,9 @@ void	rrr(t_stack_node **a, t_stack_node **b)
 void	rev_rotate_both(t_stack_node **a, t_stack_node **b,
 		t_stack_node *cheapest_node)
 {
-	
 	int i = 0;
-	while ((*b != cheapest_node->target_node || *a != cheapest_node) && (i++) < 10)
+	while ((*b != cheapest_node->target_node || *a != cheapest_node) && (i++) < 5)
 	{
-		printf("rr_both, i = %d\n", i);
-		print_list(*a, "A"); print_list(*b, "B");
 		if (*b == cheapest_node)
 			rra(a);
 		else if (*a == cheapest_node->target_node)

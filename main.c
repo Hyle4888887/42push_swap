@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:06:57 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/04/14 16:10:42 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/04/15 14:30:18 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int	main(int argc, char **argv)
 
 void print_list(t_stack_node *stack, char *name)
 {
+	if (!stack)
+		return ;
 	printf("%s :\n", name);	
 	while (stack != NULL) {
 		printf("Node numéro %i: %p\n", stack->index, stack);
