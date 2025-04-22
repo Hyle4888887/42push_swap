@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 12:05:36 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/04/14 15:48:14 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/04/19 14:01:04 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,22 +47,12 @@ void	rr(t_stack_node **a, t_stack_node **b)
 	write(1, "rr\n", 3);
 }
 
-void	rotate_both(t_stack_node **a, t_stack_node **b,
+void	rotate_both(t_stack_node **stack_to, t_stack_node **stack_from,
 		t_stack_node *cheapest_node)
 {
-	print_list(*a, "A") ; print_list(*b, "B");
-	printf("rr cheapest_node = %p\n", cheapest_node);
-	printf("rr cheapest_node->target = %p\n", cheapest_node->target_node);
-	int i = 0;
-	while ((*b != cheapest_node || *a != cheapest_node->target_node) && (i++) < 10)
-	{
-		if (*b == cheapest_node)
-			ra(a);
-		else if (*a == cheapest_node->target_node)
-			rb(b);
-		else
-			rr(a, b);
-	}
-	current_index(*a);
-	current_index(*b);
+	while ((*stack_from != cheapest_node && *stack_to != cheapest_node->target_node) &&
+			!(*stack_from) && !(*stack_to))
+		rr(stack_to, stack_from);
+	current_index(*stack_to);
+	current_index(*stack_from);
 }

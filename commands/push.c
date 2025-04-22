@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:34:18 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/04/15 14:34:18 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/04/19 13:52:41 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void	prep_for_push(t_stack_node **stack, t_stack_node *top_node,
 	{
 		if (stack_name == 'a')
 		{
-			if (top_node->above_mean)
+			if (top_node->above_middle)
 				ra(stack);
 			else
 				rra(stack);
 		}
 		else if (stack_name == 'b')
 		{
-			if (top_node->above_mean)
+			if (top_node->above_middle)
 				rb(stack);
 			else
 				rra(stack);

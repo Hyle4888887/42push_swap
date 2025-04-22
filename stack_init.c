@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:37:25 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/04/14 16:18:13 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/04/19 14:33:22 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,38 +78,35 @@ void	init_stack_a(t_stack_node **a, char **argv)
 	current_index(*a);
 }
 
-static int	get_mean(t_stack_node *stack) // mean == moyenne en anglais
+static int	get_middle(t_stack_node *stack) // mean == moyenne en anglais
 {
-    long	nb;
 	long	i;
 	
-	nb = 0;
 	i = 0;
-	while (stack && stack != NULL)
+	while (stack && stack->next != NULL)
 	{
-		nb += (long)stack->nbr;
 		stack = stack->next;
 		i++;
 	}
-	return ((int)(nb / i));
+	return ((int)(i / 2));
 }
 
 void	current_index(t_stack_node *stack)
 {
 	int	i;
-	int	mean;
+	int	middle;
 
 	i = 0;
 	if (!stack)
 		return ;
-	mean = get_mean(stack);
+	middle = get_middle(stack);
 	while (stack && stack != NULL)
 	{
 		stack->index = i;
-		if (stack->nbr > mean)
-			stack->above_mean = true;
+		if (stack->index <= middle)
+			stack->above_middle = true;
 		else
-			stack->above_mean = false;
+			stack->above_middle = false;
 		stack = stack->next;
 		i++;
 	}

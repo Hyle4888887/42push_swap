@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 10:43:39 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/04/14 16:10:42 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/04/19 13:52:41 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_stack_node
 	int					nbr;
 	int					index;
 	int					push_cost;
-	bool				above_mean;
+	bool				above_middle;
 	bool				cheapest;
 	struct s_stack_node	*target_node;
 	struct s_stack_node	*next;

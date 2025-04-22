@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 12:38:07 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/04/14 16:10:42 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/04/19 15:16:22 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,23 @@ static void	set_target_b(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*current_a;
 	t_stack_node	*target_node;
-	long			best_match_index;
+	long			best_match;
 
 	while (b)
 	{
-		best_match_index = LONG_MAX;
+		best_match = (find_max(a))->nbr;
+		target_node = (find_max(a));
 		current_a = a;
 		while (current_a)
 		{
-			if (current_a->nbr < b->nbr
-				&& current_a->nbr < best_match_index)
+			if (b->nbr < current_a->nbr && current_a->nbr < best_match)
 			{
-				best_match_index = current_a->nbr;
+				best_match = current_a->nbr;
 				target_node = current_a;
 			}
 			current_a = current_a->next;
 		}
-		if (best_match_index == LONG_MAX)
-			b->target_node = find_min(a);
-		else
-			b->target_node = target_node;
+		b->target_node = target_node;
 		b = b->next;
 	}
 }
@@ -50,10 +47,10 @@ static void	cost_analysis_b(t_stack_node *a, t_stack_node *b)
 	while (b)
 	{
 		b->push_cost = b->index;
-		if (!(b->above_mean))
+		if (!(b->above_middle))
 			b->push_cost = len_b - (b->index); 
 		
-		if (b->target_node->above_mean)
+		if (b->target_node->above_middle)
 			b->push_cost += len_a - (b->target_node->index);
 		else
 			b->push_cost += len_a - (b->target_node->index);

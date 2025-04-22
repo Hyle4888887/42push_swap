@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 15:23:36 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/03/05 13:49:34 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/04/19 17:43:49 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@ bool	stack_sorted(t_stack_node *stack)
 {
 	if (!stack)
 		return (1);
-	while (stack->next)
+	while (stack && stack->next)
 	{
-		if (stack->nbr > stack->next->nbr)
+		if (stack->nbr >= stack->next->nbr)
 			return(false);
 		stack = stack->next;
 	}
+	printf("bou\n");
 	return (true);
 }
 
@@ -79,6 +80,8 @@ t_stack_node	*get_cheapest(t_stack_node *stack)
 {
 	if (!stack)
 		return (NULL);
+	else if (stack_len(stack) < 2)
+		return (stack);
 	while (!(stack->cheapest))
 		stack = stack->next;
 	return (stack);

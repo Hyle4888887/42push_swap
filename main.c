@@ -6,7 +6,7 @@
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 16:06:57 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/04/15 14:30:18 by mpoirier         ###   ########.fr       */
+/*   Updated: 2025/04/19 14:31:42 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,12 @@ void print_list(t_stack_node *stack, char *name)
 		printf("Node numéro %i: %p\n", stack->index, stack);
 		printf("\t nbr = \t\t%i\n", stack->nbr);
 		printf("\t push_cost = \t%i\n", stack->push_cost);
-		printf("\t above_mean = %s\n", (stack->above_mean) ? "true" : "false");
+		printf("\t above_middle = %s\n", (stack->above_middle) ? "true" : "false");
 		printf("\t cheapest = \t%s\n", (stack->cheapest) ? "true" : "false"); 
 		printf("\t target_node = \t%p\n", stack->target_node);
-		printf("\t next = \t%p\n", stack->next);
+		/*printf("\t next = \t%p\n", stack->next);
 		printf("\t prev = \t%p\n", stack->prev);
-		write(1, "\n", 1);
+		write(1, "\n", 1); */
 		stack = stack->next; }
 	return ;
 }

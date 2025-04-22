@@ -14,6 +14,30 @@
 
 static void	swap(t_stack_node **stack)
 {
+	t_stack_node *first;
+    	t_stack_node *second;
+
+    	if (!stack || !*stack || !(*stack)->next)
+        	return;
+
+    first  = *stack;          /* ancien premier  */
+    second = first->next;     /* ancien second   */
+
+    /* on détache ‘first’ du reste de la liste */
+    first->next = second->next;
+    if (first->next)              /* si un troisième nœud existe      */
+        first->next->prev = first;/*     on met à jour son prev       */
+
+    /* on place ‘second’ devant ‘first’ */
+    second->prev = NULL;
+    second->next = first;
+    first->prev  = second;
+
+    /* nouvelle tête de pile */
+    *stack = second;
+}
+
+/*{
 	t_stack_node	*first;
 	t_stack_node	*second;
 	t_stack_node	*third;
@@ -27,7 +51,7 @@ static void	swap(t_stack_node **stack)
 	second->next = first;
 	(*stack) = second;
 	current_index(*stack);
-}
+}*/
 
 void	sa(t_stack_node **a)
 {
