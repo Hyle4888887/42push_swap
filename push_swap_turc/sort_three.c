@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   sort_three.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/14 18:34:18 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/04/28 15:51:24 by mpoirier         ###   ########.fr       */
+/*   Created: 2025/02/13 15:51:53 by mpoirier          #+#    #+#             */
+/*   Updated: 2025/04/28 16:56:59 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
-bool	push(t_stack_node **to, t_stack_node **from)
+void	sort_3(t_stack_node **a)
 {
-	;
-}
+	t_stack_node	*biggest_node;
 
-void	pa(t_stack_node **a, t_stack_node **b)
-{
-	if (push(b, a))
-		write(1, "pa\n", 3);
-}
-
-void	pb(t_stack_node **a, t_stack_node **b)
-{
-	if (push(a, b))
-		write(1, "pb\n", 3);
+	biggest_node = find_max(*a);
+	if (biggest_node == *a)
+		ra(a);
+	else if ((*a)->next == biggest_node)
+		rra(a);
+	if ((*a)->nbr > (*a)->next->nbr)
+		sa(a);
 }

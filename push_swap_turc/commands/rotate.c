@@ -1,59 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rev_rotate.c                                       :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/14 13:33:53 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/04/28 16:39:28 by mpoirier         ###   ########.fr       */
+/*   Created: 2025/02/14 12:05:36 by mpoirier          #+#    #+#             */
+/*   Updated: 2025/04/19 14:01:04 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void static	rev_rotate(t_stack_node **stack)
+void static	rotate(t_stack_node **stack)
 {
-	t_stack_node	*first_node;
 	t_stack_node	*last_node;
-	
-	if (!*stack || !(*stack)->next)
+	t_stack_node	*first_node;
+
+	if (!*stack || !((*stack)->next))
 		return ;
-	first_node = *stack;
+	first_node = (*stack);
+	(*stack) = (*stack)->next;
 	last_node = find_last(*stack);
+	first_node->next = NULL;
 	first_node->prev = last_node;
-	last_node->prev->next = NULL;
-	last_node->prev = NULL;
 	last_node->next = first_node;
-	*stack = last_node;	
 	current_index(*stack);
 }
 
-void	rra(t_stack_node **a)
+void	ra(t_stack_node **a)
 {
-	rev_rotate(a);
-	write(1, "rra\n", 4);
+	rotate(a);
+	write(1, "ra\n", 3);
 }
 
-void	rrb(t_stack_node **b)
+void	rb(t_stack_node **b)
 {
-	rev_rotate(b);
-	write(1, "rrb\n", 4);
+	rotate(b);
+	write(1, "rb\n", 3);
 }
 
-void	rrr(t_stack_node **a, t_stack_node **b)
+void	rr(t_stack_node **a, t_stack_node **b)
 {
-	rev_rotate(a);
-	rev_rotate(b);
-	write(1, "rrr\n", 4);
+	rotate(a);
+	rotate(b);
+	write(1, "rr\n", 3);
 }
 
-void	rev_rotate_both(t_stack_node **stack_to, t_stack_node **stack_from,
-	t_stack_node *cheapest_node)
+void	rotate_both(t_stack_node **stack_to, t_stack_node **stack_from,
+		t_stack_node *cheapest_node)
 {
 	while ((*stack_from != cheapest_node && *stack_to != cheapest_node->target_node) &&
 			!(*stack_from) && !(*stack_to))
-		rrr(stack_to, stack_from);
+		rr(stack_to, stack_from);
 	current_index(*stack_to);
 	current_index(*stack_from);
 }

@@ -1,30 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   ft_is_str2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/14 18:34:18 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/04/28 15:51:24 by mpoirier         ###   ########.fr       */
+/*   Created: 2025/04/22 16:34:04 by mpoirier          #+#    #+#             */
+/*   Updated: 2025/04/22 16:43:21 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "libft.h"
 
-bool	push(t_stack_node **to, t_stack_node **from)
+bool	ft_isalpha(int c)
 {
-	;
+	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
 }
 
-void	pa(t_stack_node **a, t_stack_node **b)
+bool	ft_isupperalpha(int c)
 {
-	if (push(b, a))
-		write(1, "pa\n", 3);
+	return (c >= 'A' && c <= 'Z');
 }
 
-void	pb(t_stack_node **a, t_stack_node **b)
+bool	ft_isloweralpha(int c)
 {
-	if (push(a, b))
-		write(1, "pb\n", 3);
+	return (c >= 'a' && c <= 'z');
+}
+
+bool	ft_str_is(const char *str, bool (*f)(int))
+{
+	int	i;
+
+	if (!str)
+		return (false);
+	i = -1;
+	while (str[++i])
+	{
+		if (!(*f)(str[i]))
+			return (false);
+	}
+	return (true);
 }

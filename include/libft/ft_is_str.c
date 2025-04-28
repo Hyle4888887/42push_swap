@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   ft_is_str.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpoirier <mpoirier@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/14 18:34:18 by mpoirier          #+#    #+#             */
-/*   Updated: 2025/04/28 15:51:24 by mpoirier         ###   ########.fr       */
+/*   Created: 2024/09/16 08:52:14 by mpoirier          #+#    #+#             */
+/*   Updated: 2025/04/22 16:39:01 by mpoirier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "libft.h"
 
-bool	push(t_stack_node **to, t_stack_node **from)
+bool	ft_isascii(int c)
 {
-	;
+	return (c <= 127 && c >= 0);
 }
 
-void	pa(t_stack_node **a, t_stack_node **b)
+bool	ft_isdigit(int c)
 {
-	if (push(b, a))
-		write(1, "pa\n", 3);
+	return (c >= '0' && c <= '9');
 }
 
-void	pb(t_stack_node **a, t_stack_node **b)
+bool	ft_isprint(int c)
 {
-	if (push(a, b))
-		write(1, "pb\n", 3);
+	return (c > 31 && c < 127);
+}
+
+bool	ft_isalnum(int c)
+{
+	return ((c >= '0' && c <= '9') || (c >= 'a' && c <= 'z')
+		|| (c >= 'A' && c <= 'Z'));
 }
